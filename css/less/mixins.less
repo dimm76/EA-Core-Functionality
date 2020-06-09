@@ -1,0 +1,157 @@
+
+// Animations
+
+@keyframes slide-right{
+    0%{
+        transform: translateX(-300px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes slide-left{
+    0%{
+        transform: translateX(300px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slide-bottom{
+    0%{
+        transform: translateY(800px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes slide-down{
+    0%{
+        transform: translateY(-50px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes aparecer-text{
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+
+@keyframes zoom-hero{
+    0% { 
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(2);
+    }
+    100% { 
+        transform: scale(1);}
+  }
+
+// Mixins Parametrics
+
+.font-size(@size) {
+    @rem: @size / 16;
+    font-size: @size * 1px;
+    font-size: @rem * 1rem;
+}
+
+.line-height(@size){
+    @rem: @size / 16;
+    line-height: @size * 1px;
+    line-height: @rem * 1rem;
+}
+
+.btn(@colorbtn ; @colortext){
+    background-color: @colorbtn;
+    color:@colortext;
+    border: solid 1px @colortext;
+    a{
+        color:@colortext
+    }
+    &:hover,
+    &:focus{
+        background-color: @colortext ;
+        color:@colorbtn;
+        a{
+            color:@colorbtn
+        }
+    }
+    .common-btn
+}
+
+.block-line(@size ; @color){
+    background-color: @color;
+    width: @size * 1px;
+    margin-bottom:20px;
+    height: 2px;
+}
+
+
+
+// Mixins NON Parametrics
+
+.clearfix(){ //https://gist.github.com/geddski/2416187
+    zoom:1;
+    &:before, &:after{ content:""; display:table; }
+    &:after{ clear: both; }
+}
+
+.sombra(){
+    box-shadow: 0px 8px 38px -9px rgba(0, 0, 0, 0.57);
+}
+
+.common-btn(){
+    padding: 16px 30px;
+    margin:5px;
+    width: auto;
+    border-radius: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 2px;
+    display: inline-block;
+    .font-size(15);
+    font-weight: 300;
+    text-align: center;
+    p{
+        margin: 0;
+    }
+
+}
+
+.video-block(){
+    .video-wrap{
+        position: relative;
+        max-width: calc(1150px / 2);
+        flex-basis: calc(1150px / 2);
+        background-color: @color-back;
+        border-radius: 10px;
+
+        .video-container{
+            width: 80%;
+            margin: auto;
+            padding: 30px 0px;
+            .embed-container{
+                position: relative; 
+                padding-bottom: 56.25%;
+                overflow: hidden;
+                max-width: 100%;
+                height: auto;
+            }
+            .embed-container iframe,
+            .embed-container object,
+            .embed-container embed { 
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
